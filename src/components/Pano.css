@@ -1,0 +1,67 @@
+.pano-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+
+.info-spot-header {
+    display: flex;
+    width: max-content;
+    background-color: transparent;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 0px 0px 0px 3px;
+    width: 100%;
+}
+
+.info-spot-header-image-box {
+    height: 30px;
+    width: 30px;
+}
+
+.info-spot-header-image {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.info-spot-header-title {
+    width: fit-content;
+    color: white;
+    font-size: 15px;
+    margin-left: 5px;
+    text-align: center;
+    align-items: center;
+    display: none;
+    width: 100%;
+}
+
+.info-spot-header-open {
+    background-color: rgb(103,115,131)
+}
+
+.info-spot-header-title-open {
+    display: flex;
+}
+
+.info-spot-header-close-button {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    padding: 0px 9px 0px 10px;
+    color: white;
+    cursor: pointer;
+    background-color: rgb(78,88,104);
+    border-top-right-radius: 5px;
+    margin-left: 10px;
+}
+
+.info-spot-body-text {
+    font-size: 15px;
+    padding: 10px;
+    background-color: rgb(58,68,84);
+    color: white;
+}
