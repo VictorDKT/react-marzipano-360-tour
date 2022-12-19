@@ -36,13 +36,15 @@ function Pano(props) {
             child = e.lastElementChild;
         }
         const panoScenes = scenes.map((data, idx) => {
-            const { link, initialViewParameters, levels, faceSize, linkHotspots } = data;
-            var limiter = Marzipano.RectilinearView.limit.traditional(faceSize, 100*Math.PI/180, 120*Math.PI/180);
-            var view = new Marzipano.RectilinearView(initialViewParameters, limiter);
-            var geometry = new Marzipano.CubeGeometry(levels);
+            const { link, initialViewParameters, levels, faceSize, linkHotspots, type, width } = data;
+            var limiter = type === "unique" ? Marzipano.RectilinearView.limit.traditional(1024, 100*Math.PI/180) : Marzipano.RectilinearView.limit.traditional(faceSize, 100*Math.PI/180, 120*Math.PI/180);
+            var view = type === "unique" ? new Marzipano.RectilinearView({ yaw: Math.PI }, limiter) : new Marzipano.RectilinearView(initialViewParameters, limiter);
+            var geometry = type === "unique" ? new Marzipano.EquirectGeometry([{ width: width }]) : new Marzipano.CubeGeometry(levels);
 
             const scene = viewer.createScene({
-                source: Marzipano.ImageUrlSource.fromString(
+                source: type === "unique" ? Marzipano.ImageUrlSource.fromString(
+                        link + ".jpg"
+                    ) : Marzipano.ImageUrlSource.fromString(
                     link + "/{z}/{f}/{y}/{x}.jpg",
                     { cubeMapPreviewUrl: link + "/preview.jpg" }
                 ),
